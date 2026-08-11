@@ -28,6 +28,10 @@ mod with_json;
 #[cfg_attr(docsrs, doc(cfg(feature = "with-json")))]
 pub use with_json::sea_value_to_json_value;
 
+#[cfg(feature = "with-json")]
+#[cfg_attr(docsrs, doc(cfg(feature = "with-json")))]
+mod json_value;
+
 #[cfg(feature = "with-chrono")]
 #[cfg_attr(docsrs, doc(cfg(feature = "with-chrono")))]
 mod with_chrono;
