@@ -204,21 +204,12 @@ fn cmp_f64(l: &Option<f64>, r: &Option<f64>) -> bool {
 
 #[cfg(feature = "with-json")]
 fn hash_json<H: Hasher>(v: &Option<Box<Json>>, state: &mut H) {
-    match v {
-        Some(v) => serde_json::to_string(v).unwrap().hash(state),
-        None => "null".hash(state),
-    }
+    v.hash(state);
 }
 
 #[cfg(feature = "with-json")]
 fn cmp_json(l: &Option<Box<Json>>, r: &Option<Box<Json>>) -> bool {
-    match (l, r) {
-        (Some(l), Some(r)) => serde_json::to_string(l)
-            .unwrap()
-            .eq(&serde_json::to_string(r).unwrap()),
-        (None, None) => true,
-        _ => false,
-    }
+    l == r
 }
 
 #[cfg(feature = "postgres-vector")]

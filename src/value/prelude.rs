@@ -1,6 +1,3 @@
-/*#[cfg(feature = "with-json")]
-pub use serde_json::{self, Value as Json}; */
-
 #[cfg(feature = "with-json")]
 pub use super::json_value::Json;
 

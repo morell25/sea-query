@@ -1,7 +1,5 @@
 use serde_json::Number;
 
-use super::*;
-
 #[derive(Clone, Debug, Eq, PartialEq, Hash, Default)]
 pub enum Json {
     #[default]
@@ -58,6 +56,13 @@ impl From<Json> for serde_json::Value {
         }
     }
 }
+
+impl std::fmt::Display for Json {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", serde_json::Value::from(self.clone()))
+    }
+}
+
 macro_rules! json_from_int {
     ($($t:ty),* $(,)?) => {
         $(
