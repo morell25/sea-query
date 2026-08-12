@@ -1,5 +1,8 @@
+/*#[cfg(feature = "with-json")]
+pub use serde_json::{self, Value as Json}; */
+
 #[cfg(feature = "with-json")]
-pub use serde_json::{self, Value as Json};
+pub use super::json_value::Json;
 
 #[cfg(feature = "with-chrono")]
 pub use chrono::{self, DateTime, FixedOffset, Local, NaiveDate, NaiveDateTime, NaiveTime, Utc};

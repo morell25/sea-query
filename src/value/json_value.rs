@@ -1,7 +1,10 @@
+use serde_json::Number;
+
 use super::*;
 
-#[derive(Debug)]
+#[derive(Clone, Debug, Eq, PartialEq, Hash, Default)]
 pub enum Json {
+    #[default]
     Null,
     Bool(bool),
     Number(serde_json::Number),
@@ -53,6 +56,30 @@ impl From<Json> for serde_json::Value {
                     .collect(),
             ),
         }
+    }
+}
+macro_rules! json_from_int {
+    ($($t:ty),* $(,)?) => {
+        $(
+        impl From<$t> for Json {
+            fn from(value: $t) -> Self {
+                Json::Number(value.into())
+            }
+        }
+        )*
+    };
+}
+json_from_int!(i8, i16, i32, i64, u8, u16, u32, u64);
+
+impl From<f32> for Json {
+    fn from(value: f32) -> Self {
+        Number::from_f64(value.into()).map_or(Json::Null, Json::Number)
+    }
+}
+
+impl From<f64> for Json {
+    fn from(value: f64) -> Self {
+        Number::from_f64(value).map_or(Json::Null, Json::Number)
     }
 }
 
