@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.2 - 2026-08-12
+
+- [1.0.2](changelog/1.0.2.md) - `clear_group_by()` / `clear_having()`, fix null date/time JSON conversion
+
+## sea-query-postgres 0.6.1 - 2026-08-12
+
+- [sea-query-postgres 0.6.1](changelog/sea-query-postgres-0.6.1.md) - Jiff type binder support via `with-jiff`
+
 ## 1.0.1 - 2026-05-30
 
 - [1.0.1](changelog/1.0.1.md) - Borrowed scalar primitive conversions for `Value`
